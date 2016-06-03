@@ -1,0 +1,6 @@
+
+The page loads
+
+52 cards should be automatically shuffled and split into two arrays.
+
+Two images represent two stacks of cards.

@@ -1,0 +1,44 @@
+
+WAR - the online game!
+
+## USER STORIES
+
+As a user...
+
+# BRONZE
+
+I want to see two face-down stacks of cards, mine and the computer's.
+
+When I click my stack, I want the top cards of both stacks to flip over, which will be one "hand".
+
+If my card is higher than the computer's card, I want to get a point.
+
+If the computer's card is higher than my card, I want the computer to get a point.
+
+If the cards are tied, neither I nor the computer should get a point.
+
+Once the round is over, I want both cards to go to the bottom of the winner's stack.
+
+When one player has all the cards, I want them to be declared the winner.
+
+I want to be able to reset the game at any time.
+
+# SILVER
+
+If the two cards are tied, I want a "war" hand--each player puts down three cards, and the final
+cards are compared to one another.
+
+I want the image representing a player's stack to change based on the number of cards in the stack.
+
+# GOLD
+
+I want sweet animations for flipping cards.
+
+I want to be able to set the number of players.
+    If two players tie with the top card, they should have a war round. The other players' card(s)
+    are included with the winner's bounty.
+
+    If three or more players tie with the highest card, there should be a war hand between all
+    players.
+
+    If two people tie but there is a higher card in the hand, there should not be a war.
