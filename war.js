@@ -2,7 +2,10 @@
 var deckOfCards = ['H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'H11', 'H12', 'H13', 'H14', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C14', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12', 'D13', 'D14', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13', 'S14'];
 var playerDeck = [];
 var computerDeck = [];
-var turn = 1;
+var playerCard;
+var computerCard;
+var playerScore = 0;
+var computerScore = 0;
 
 
 $(document).on("ready", function() {
@@ -45,12 +48,46 @@ $(".title").on("click", function() {
 });
 
 $(".click img").on("click", function() {
-    console.log("active card clicked");
-    $("#player").find(".cardstack.active").html("<img src='cards/"+playerDeck[turn-1]+".png' width=100% />");
-    $("#computer").find(".cardstack.active").html("<img src='cards/"+computerDeck[turn-1]+".png' width=100% />");
-    console.log(turn);
-    turn++;
+    playerCard = playerDeck[0];
+    computerCard = computerDeck[0];
+    console.log(playerCard, computerCard);
+    $("#player").find(".cardstack.active").html("<img src='cards/"+playerCard+".png' width=100% />");
+    $("#computer").find(".cardstack.active").html("<img src='cards/"+computerCard+".png' width=100% />");
+    if ( parseInt ( playerCard.substring(1) ) > parseInt ( computerCard.substring(1) ) ) {
+        playerScore++;
+        playerDeck.shift();
+        computerDeck.shift();
+        playerDeck.push(playerCard, computerCard);
+    }
+    else if ( parseInt ( playerCard.substring(1) ) < parseInt ( computerCard.substring(1) ) ) {
+        computerScore++;
+        playerDeck.shift();
+        computerDeck.shift();
+        computerDeck.push(computerCard, playerCard);
+    }
+
+    else {
+        playerDeck.shift();
+        playerDeck.push(playerCard);
+        computerDeck.shift();
+        playerDeck.push(computerCard);
+    }
+    console.log("Player score: "+playerScore+", Computer score: "+computerScore);
+
+
+    console.log(playerDeck.length, computerDeck.length);
+
+    if (playerDeck.length == 0) {
+        console.log("the computer wins!");
+    }
+
+    if (computerDeck.length == 0) {
+        console.log("the player wins!");
+    }
+
 });
+
+
 
 
 //DOC ON READY END TAG
