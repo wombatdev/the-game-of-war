@@ -4,12 +4,14 @@ var playerDeck = [];
 var computerDeck = [];
 var playerCard;
 var computerCard;
-var playerScore = 0;
-var computerScore = 0;
+var playerWarCard;
+var computerWarCard;
+var pot = [];
 
 
 $(document).on("ready", function() {
 
+// I found this shuffle function online
 function shuffle(array) {
     var m = array.length, t, i;
 
@@ -27,17 +29,25 @@ function shuffle(array) {
     return array;
 }
 
+// To deal the "array" of cards...
 function deal(array) {
+
+    // Loop a function 52 times...
     for (i = 0; i < array.length; i++ ) {
+
+        // Dealing every other card to the Player...
         if ((i+2)%2 == 0) {
             playerDeck.push(array[i]);
         }
+
+        // And every other card to the computer.
         else {
             computerDeck.push(array[i]);
         }
     }
 }
 
+// Clicking on the title runs the shuffle and deal functions.
 $(".title").on("click", function() {
     shuffle(deckOfCards);
     deal(deckOfCards);
@@ -47,33 +57,27 @@ $(".title").on("click", function() {
     console.log(computerDeck.length);
 });
 
+// When the user clicks on their stack of cards...
 $(".click img").on("click", function() {
-    playerCard = playerDeck[0];
-    computerCard = computerDeck[0];
-    console.log(playerCard, computerCard);
-    $("#player").find(".cardstack.active").html("<img src='cards/"+playerCard+".png' width=100% />");
-    $("#computer").find(".cardstack.active").html("<img src='cards/"+computerCard+".png' width=100% />");
+
+    handInPlay();
+
+    // Either the player's card is higher...
     if ( parseInt ( playerCard.substring(1) ) > parseInt ( computerCard.substring(1) ) ) {
-        playerScore++;
-        playerDeck.shift();
-        computerDeck.shift();
-        playerDeck.push(playerCard, computerCard);
+        playerWinsHand ();
     }
+
+    // Or the computer's card is higher...
     else if ( parseInt ( playerCard.substring(1) ) < parseInt ( computerCard.substring(1) ) ) {
-        computerScore++;
-        playerDeck.shift();
-        computerDeck.shift();
-        computerDeck.push(computerCard, playerCard);
+        computerWinsHand();
     }
 
+    // Or there's a war.
     else {
-        playerDeck.shift();
-        playerDeck.push(playerCard);
-        computerDeck.shift();
-        playerDeck.push(computerCard);
+        warEvent();
     }
-    console.log("Player score: "+playerScore+", Computer score: "+computerScore);
 
+    pot = [];
 
     console.log(playerDeck.length, computerDeck.length);
 
@@ -87,6 +91,51 @@ $(".click img").on("click", function() {
 
 });
 
+function handInPlay () {
+
+    //The first card in the stack becomes the card in play.
+    playerCard = playerDeck[0];
+    computerCard = computerDeck[0];
+    console.log(playerCard+", "+computerCard);
+
+    // Update the images of the cards in play.
+    $("#player").find(".cardstack.active").html("<img src='cards/"+playerCard+".png' width=100% />");
+    $("#computer").find(".cardstack.active").html("<img src='cards/"+computerCard+".png' width=100% />");
+
+
+    // Both cards are now part of the winner's pot and are removed from their original stacks.
+    pot.push(playerCard, computerCard);
+    playerDeck.shift();
+    computerDeck.shift();
+}
+
+// If the player wins, add the pot to the bottom of their stack.
+function playerWinsHand () {
+    playerDeck = playerDeck.concat(pot);
+}
+
+// Same thing for the computer.
+function computerWinsHand () {
+    computerDeck = computerDeck.concat(pot);
+}
+
+// If there is a war,
+function warEvent () {
+    playerWarCard = playerDeck[2];
+    computerWarCard = computerDeck[2];
+    for (i=0; i<3; i++) {
+        handInPlay();
+    }
+    if ( parseInt ( playerWarCard.substring(1) ) > parseInt ( computerWarCard.substring(1) ) ) {
+        playerWinsHand();
+    }
+    else if ( parseInt ( playerWarCard.substring(1) ) < parseInt ( computerWarCard.substring(1) ) ) {
+        computerWinsHand();
+    }
+    else {
+        warEvent();
+    }
+}
 
 
 
