@@ -60,6 +60,7 @@ $(".title").on("click", function() {
 // When the user clicks on their stack of cards...
 $(".click img").on("click", function() {
 
+    // See below.
     handInPlay();
 
     // Either the player's card is higher...
@@ -91,6 +92,7 @@ $(".click img").on("click", function() {
 
 });
 
+// Every time a card is flipped:
 function handInPlay () {
 
     //The first card in the stack becomes the card in play.
@@ -99,8 +101,11 @@ function handInPlay () {
     console.log(playerCard+", "+computerCard);
 
     // Update the images of the cards in play.
-    $("#player").find(".cardstack.active").html("<img src='cards/"+playerCard+".png' width=100% />");
-    $("#computer").find(".cardstack.active").html("<img src='cards/"+computerCard+".png' width=100% />");
+    $(".cardstack.active").css("z-index", 15);
+    $(".player.card").find(".back").html("<img src='cards/"+playerCard+".png' width=100% height=100% />");
+    $(".computer.card").find("back").html("<img src='cards/"+computerCard+".png' width=100% height=100% />");
+    $(".card").addClass("flipped");
+    $(".card").css("overflow", "visible");
 
 
     // Both cards are now part of the winner's pot and are removed from their original stacks.
@@ -119,24 +124,41 @@ function computerWinsHand () {
     computerDeck = computerDeck.concat(pot);
 }
 
-// If there is a war,
+// If there is a war...
 function warEvent () {
+
+    // Assign the war card (3rd card in) for each player to be used in the if clauses.
     playerWarCard = playerDeck[2];
     computerWarCard = computerDeck[2];
+
+    // Then run the handInPlay function 3 times to account for the cards entering the pot.
     for (i=0; i<3; i++) {
         handInPlay();
     }
+
+    // Then follow the usual winning hand functions...
     if ( parseInt ( playerWarCard.substring(1) ) > parseInt ( computerWarCard.substring(1) ) ) {
         playerWinsHand();
     }
     else if ( parseInt ( playerWarCard.substring(1) ) < parseInt ( computerWarCard.substring(1) ) ) {
         computerWinsHand();
     }
+
+    // Or begin a new war event.
     else {
         warEvent();
     }
 }
 
+function cardFlyOff () {
+    
+}
+
+function endOfTurnReset () {
+    $(".cardstack.active").css("z-index", 5);
+    $(".card").removeClass("flipped");
+    $(".card").css("overflow", "hidden");
+}
 
 
 //DOC ON READY END TAG

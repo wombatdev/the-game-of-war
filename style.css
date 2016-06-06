@@ -35,7 +35,7 @@ body {
     flex-direction: column;
 }
 
-.stack {
+.stackarea {
     justify-content: center;
     display: flex;
     flex-direction: row;
@@ -51,13 +51,62 @@ body {
     padding: 25px 0px;
     width: 300px;
     height: 400px;
+    position: relative;
+    perspective: 500px;
 }
 
-.pile img {
+.cardstack.pile {
+    z-index: 10;
+}
 
+.cardstack.active {
+    z-index: 5;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.card img {
+    margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 89%;
+    backface-visibility: hidden;
+}
+
+.player.card {
+    transform: translateX(-312px);
+    overflow: hidden;
+}
+
+.computer.card {
+    transform: translateX(312px);
+    overflow: hidden;
+}
+
+.player.card .back {
+  transform: rotateY(180deg);
+}
+
+.computer.card .back {
+    transform: rotateY(-180deg);
+}
+
+.player.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.computer.card.flipped {
+    transform: rotateY(-180deg);
 }
 
 /*.click img:active {
-    transform: rotate3d(180deg) translateX(-300px);
+    transform: rotate(180deg) translateX(-300px);
     transition: transform 0.35s;
 }*/
