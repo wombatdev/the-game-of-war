@@ -91,19 +91,19 @@ body {
 }
 
 .player.card .back {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 }
 
 .computer.card .back {
-    transform: rotateY(-180deg);
+    transform: rotateY(180deg);
 }
 
 .player.card.flipped {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 }
 
 .computer.card.flipped {
-    transform: rotateY(-180deg);
+    transform: rotateY(180deg);
 }
 
 /*.click img:active {

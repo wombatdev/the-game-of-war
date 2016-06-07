@@ -7,6 +7,7 @@ var computerCard;
 var playerWarCard;
 var computerWarCard;
 var pot = [];
+var winner;
 
 
 $(document).on("ready", function() {
@@ -102,10 +103,10 @@ function handInPlay () {
 
     // Update the images of the cards in play.
     $(".cardstack.active").css("z-index", 15);
-    $(".player.card").find(".back").html("<img src='cards/"+playerCard+".png' width=100% height=100% />");
-    $(".computer.card").find("back").html("<img src='cards/"+computerCard+".png' width=100% height=100% />");
-    $(".card").addClass("flipped");
+    $("<img class='front real' src='cards/playerstack.jpg' alt='player stack' width=100% height=100% /><img class='back real' src=cards/"+playerCard+".png alt='player card' width=100% height=100% />").appendTo(".player.card");
+    $("<img class='front real' src='cards/computerstack.jpg' alt='computer stack' width=100% height=100% /><img class='back real' src=cards/"+computerCard+".png alt='computer card' width=100% height=100% />").appendTo(".computer.card");
     $(".card").css("overflow", "visible");
+    $(".card").addClass("flipped");
 
 
     // Both cards are now part of the winner's pot and are removed from their original stacks.
@@ -117,11 +118,15 @@ function handInPlay () {
 // If the player wins, add the pot to the bottom of their stack.
 function playerWinsHand () {
     playerDeck = playerDeck.concat(pot);
+    winner = 0;
+    endOfTurn();
 }
 
 // Same thing for the computer.
 function computerWinsHand () {
     computerDeck = computerDeck.concat(pot);
+    winner = 1;
+    endOfTurn();
 }
 
 // If there is a war...
@@ -131,33 +136,97 @@ function warEvent () {
     playerWarCard = playerDeck[2];
     computerWarCard = computerDeck[2];
 
-    // Then run the handInPlay function 3 times to account for the cards entering the pot.
-    for (i=0; i<3; i++) {
-        handInPlay();
-    }
+    function chainFunctions(functions){
+        var index = 0;
+        next();
 
-    // Then follow the usual winning hand functions...
-    if ( parseInt ( playerWarCard.substring(1) ) > parseInt ( computerWarCard.substring(1) ) ) {
-        playerWinsHand();
+        function next(){
+            var currentFunction = functions[index];
+            if(currentFunction) currentFunction(next);
+            index += 1;
+        }
     }
-    else if ( parseInt ( playerWarCard.substring(1) ) < parseInt ( computerWarCard.substring(1) ) ) {
-        computerWinsHand();
-    }
-
-    // Or begin a new war event.
-    else {
-        warEvent();
-    }
+    chainFunctions([
+        function(next){
+            setTimeout(function(){
+                $(".card").css("visibility", "hidden");
+                $(".card").removeClass("flipped");
+                next();
+            }, 1000);
+        },
+        function(next){
+            setTimeout(function(){
+                $(".card").css("visibility", "visible");
+                handInPlay();
+                next();
+            }, 150);
+        },
+        function(next){
+            setTimeout(function(){
+                $(".card").css("visibility", "hidden");
+                $(".card").removeClass("flipped");
+                next();
+            }, 1000);
+        },
+        function(next){
+            setTimeout(function(){
+                $(".card").css("visibility", "visible");
+                handInPlay();
+                next();
+            }, 150);
+        },
+        function(next){
+            setTimeout(function(){
+                $(".card").css("visibility", "hidden");
+                $(".card").removeClass("flipped");
+                next();
+            }, 1000);
+        },
+        function(next){
+            setTimeout(function(){
+                $(".card").css("visibility", "visible");
+                handInPlay();
+                next();
+            }, 150);
+        },
+        function(next){
+            setTimeout(function(){
+                // Then follow the usual winning hand functions...
+                if ( parseInt ( playerWarCard.substring(1) ) > parseInt ( computerWarCard.substring(1) ) ) {
+                    playerWinsHand();
+                }
+                else if ( parseInt ( playerWarCard.substring(1) ) < parseInt ( computerWarCard.substring(1) ) ) {
+                    computerWinsHand();
+                }
+                // Or begin a new war event.
+                else {
+                    warEvent();
+                }
+                next();
+            }, 1000);
+        }
+    ]);
 }
 
-function cardFlyOff () {
-    
-}
-
-function endOfTurnReset () {
-    $(".cardstack.active").css("z-index", 5);
-    $(".card").removeClass("flipped");
-    $(".card").css("overflow", "hidden");
+function endOfTurn () {
+    setTimeout( function(){
+        $(".card").css("visibility", "hidden");
+        if (winner == 0) {
+            $(".real").css("transform", "translate(1000px,-1000px)").css("transition","all 0.25s ease-in-out");
+        }
+        else {
+            $(".real").css("transform", "translate(-1000px,-1000px)").css("transition","all 0.25s ease-in-out");
+        }
+        setTimeout( function(){
+            $(".real").remove();
+            $(".card").removeClass("flipped");
+            setTimeout( function(){
+                $(".cardstack.active").css("z-index", 5);
+                $(".card").css("overflow", "hidden");
+                $(".card").css("visibility", "visible");
+            }, 750);
+        }, 150);
+    }, 1000);
 }
 
 
