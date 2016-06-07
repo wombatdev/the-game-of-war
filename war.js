@@ -8,10 +8,22 @@ var playerWarCard;
 var computerWarCard;
 var pot = [];
 var winner;
+var clickDelay = 0;
 
 
 $(document).on("ready", function() {
 
+    var decksInUse = 0;
+    var playerCount = 0;
+    var computerCount = 0;
+
+$(".decks input").on("click", function () {
+    shuffle(deckOfCards);
+    deal(deckOfCards);
+    decksInUse++;
+    $(".deckcount").html(decksInUse);
+    updateCounts();
+})
 // I found this shuffle function online
 function shuffle(array) {
     var m = array.length, t, i;
@@ -48,18 +60,15 @@ function deal(array) {
     }
 }
 
-// Clicking on the title runs the shuffle and deal functions.
-$(".title").on("click", function() {
-    shuffle(deckOfCards);
-    deal(deckOfCards);
-    console.log(playerDeck);
-    console.log(playerDeck.length);
-    console.log(computerDeck);
-    console.log(computerDeck.length);
-});
-
 // When the user clicks on their stack of cards...
 $(".click img").on("click", function() {
+
+    if (clickDelay != 0 ) {
+        return;
+    }
+
+    else {
+        clickDelay = 1;
 
     // See below.
     handInPlay();
@@ -91,6 +100,10 @@ $(".click img").on("click", function() {
         console.log("the player wins!");
     }
 
+    setTimeout(function () {
+        clickDelay = 0;
+    }, 1000);
+    }
 });
 
 // Every time a card is flipped:
@@ -113,6 +126,7 @@ function handInPlay () {
     pot.push(playerCard, computerCard);
     playerDeck.shift();
     computerDeck.shift();
+    updateCounts();
 }
 
 // If the player wins, add the pot to the bottom of their stack.
@@ -217,6 +231,7 @@ function endOfTurn () {
         else {
             $(".real").css("transform", "translate(-1000px,-1000px)").css("transition","all 0.25s ease-in-out");
         }
+        updateCounts();
         setTimeout( function(){
             $(".real").remove();
             $(".card").removeClass("flipped");
@@ -227,6 +242,13 @@ function endOfTurn () {
             }, 750);
         }, 150);
     }, 1000);
+}
+
+function updateCounts () {
+    playerCount = playerDeck.length;
+    computerCount = computerDeck.length;
+    $("#playercount").html(playerCount);
+    $("#computercount").html(computerCount);
 }
 
 

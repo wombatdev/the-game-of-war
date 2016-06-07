@@ -10,6 +10,13 @@
     <div class="header">
       <div class="title">War!</div>
     </div>
+    <section class="options">
+        <div class="decks">
+            <input type="button" value="Add Deck" />
+            <p>Decks in Use:&nbsp;</p>
+            <p class="deckcount">0</p>
+        </div>
+    </section>
     <section class="container">
         <div class="playarea">
           <h2>Player</h2>
@@ -23,6 +30,10 @@
                       <img class="back" src="cards/#.png" alt="player card" width=100% height=100% />
                   </div>
               </div>
+          </div>
+          <div class="countarea">
+              <h2>CARDS IN BATTLE:&nbsp;</h2>
+              <h2 id="playercount">0</h2>
           </div>
         </div>
 
@@ -38,6 +49,10 @@
               <div class="cardstack pile">
                   <img src="cards/computerstack.jpg" alt="computer stack" width=100% height=100% />
               </div>
+          </div>
+          <div class="countarea">
+              <h2>CARDS IN BATTLE:&nbsp;</h2>
+              <h2 id="computercount">0</h2>
           </div>
         </div>
     </section>

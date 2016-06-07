@@ -21,6 +21,7 @@ body {
     justify-content: center;
     display: flex;
     flex-direction: row;
+    margin-top: 60px;
 }
 
 .playarea {
@@ -45,7 +46,6 @@ body {
     background-color: #E3E3E3;
     border: 1px solid #676767;
     border-radius: 15px;
-    font-family: 'Ruluko', sans-serif;
     font-size: 50px;
     margin: 5px;
     padding: 25px 0px;
@@ -106,7 +106,25 @@ body {
     transform: rotateY(180deg);
 }
 
-/*.click img:active {
-    transform: rotate(180deg) translateX(-300px);
-    transition: transform 0.35s;
-}*/
+.options {
+    position: absolute;
+}
+
+.decks {
+    margin-left: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: red solid 3px;
+    padding: 5px;
+}
+
+.decks p {
+    margin: 0px 0px 0px 15px;
+}
+
+.countarea {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
