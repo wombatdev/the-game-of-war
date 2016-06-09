@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>WAR</title>
@@ -29,18 +30,21 @@
             </div>
         </div>
     </section>
-    <section class="container">
+    <section id="holder">
+        <section>
         <div class="animations"><img class="warbox" src="images/warbox.png" alt="WAR!" /></div>
+        </section>
+        <section class="container">
         <div class="playarea">
           <h2 class="playername">PLAYER</h2>
           <div class="stackarea">
               <div class="cardstack pile click">
-                  <img src="cards/playerstack.jpg" alt="player stack" width=100% height=100% />
+                  <img src="cards/playerstack.jpg" alt="player stack" />
               </div>
               <div class="cardstack active">
                   <div class="player card">
-                      <img class="front" src="cards/playerstack.jpg" alt="player stack" width=100% height=100% />
-                      <img class="back" src="cards/#.png" alt="player card" width=100% height=100% />
+                      <img class="front" src="cards/playerstack.jpg" alt="player stack" />
+                      <img class="back" src="cards/#.png" alt="player card" />
                   </div>
               </div>
           </div>
@@ -49,18 +53,17 @@
               <h2 id="playercount">0</h2>
           </div>
         </div>
-        <!-- <div class="animations"><img class="warbox" src="images/warbox.png" alt="WAR!" /></div> -->
         <div class="playarea">
           <h2 class="playername">COMPUTER</h2>
           <div class="stackarea">
               <div class="cardstack active">
                   <div class="computer card">
-                      <img class="front" src="cards/computerstack.jpg" alt="player stack" width=100% height=100% />
-                      <img class="back" src="cards/#.png" alt="computer card" width=100% height=100% />
+                      <img class="front" src="cards/computerstack.jpg" alt="player stack" />
+                      <img class="back" src="cards/#.png" alt="computer card" />
                   </div>
               </div>
               <div class="cardstack pile">
-                  <img src="cards/computerstack.jpg" alt="computer stack" width=100% height=100% />
+                  <img src="cards/computerstack.jpg" alt="computer stack" />
               </div>
           </div>
           <div class="countarea">
@@ -68,6 +71,7 @@
               <h2 id="computercount">0</h2>
           </div>
         </div>
+        </section>
     </section>
   </body>
 </html>
