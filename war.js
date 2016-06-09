@@ -100,8 +100,6 @@ $(".click img").on("click", function() {
         warEvent();
     }
 
-    pot = [];
-
     console.log(playerDeck.length, computerDeck.length);
 
     if (playerDeck.length == 0 || computerDeck.length == 0) {
@@ -173,13 +171,6 @@ function warEvent () {
             ($(".warbox").animate({top: "-=700px"}, "fast"));
         }, 350);
     });
-
-    if (playerDeck.length < 3) {
-        playerWarCard = playerDeck[playerDeck.length-1]
-    }
-    if (computerDeck.length < 3) {
-        computerWarCard = computerDeck[computerDeck.length-1]
-    }
 
     function chainFunctions(functions){
         var index = 0;
@@ -273,6 +264,7 @@ function endOfTurn () {
             }, 750);
         }, 150);
     }, 1000);
+    pot = [];
 }
 
 function updateCounts () {
