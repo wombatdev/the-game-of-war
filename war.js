@@ -155,9 +155,9 @@ function warEvent () {
     playerWarCard = playerDeck[2];
     computerWarCard = computerDeck[2];
 
-    $(".warbox").animate({top: "+=1500px"}, "medium", "linear", function() {
+    $(".warbox").animate({top: "+=700px"}, "medium", "linear", function() {
         setTimeout(function() {
-            ($(".warbox").animate({top: "-=1500px"}, "fast"));
+            ($(".warbox").animate({top: "-=700px"}, "fast"));
         }, 350);
     });
 
