@@ -24,6 +24,11 @@ $(".decks input").on("click", function () {
     $(".deckcount").html(decksInUse);
     updateCounts();
 })
+
+$(".shuffle input").on("click", function () {
+    shuffle(playerDeck);
+    shuffle(computerDeck);
+})
 // I found this shuffle function online
 function shuffle(array) {
     var m = array.length, t, i;
@@ -102,7 +107,7 @@ $(".click img").on("click", function() {
 
     setTimeout(function () {
         clickDelay = 0;
-    }, 1000);
+    }, 2000);
     }
 });
 
@@ -149,6 +154,19 @@ function warEvent () {
     // Assign the war card (3rd card in) for each player to be used in the if clauses.
     playerWarCard = playerDeck[2];
     computerWarCard = computerDeck[2];
+
+    $(".warbox").animate({marginTop: "0px"}, "medium", "linear", function() {
+        setTimeout(function() {
+            ($(".warbox").animate({marginTop: "-1000px"}, "fast"));
+        }, 350);
+    });
+
+    if (playerDeck.length < 3) {
+        playerWarCard = playerDeck[playerDeck.length-1]
+    }
+    if (computerDeck.length < 3) {
+        computerWarCard = computerDeck[computerDeck.length-1]
+    }
 
     function chainFunctions(functions){
         var index = 0;
