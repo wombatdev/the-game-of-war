@@ -22,9 +22,11 @@ Go to <a href="http://wombatdev.github.io/the-game-of-war/">http://wombatdev.git
 
 <h3>Unsolved Problems</h3>
 
-Many, many.
+One in particular - how to handle cases where a player runs out of cards during a War event. I think I could have taken care of it, but adding animations resulted in my JS becoming extremely convoluted, hard-to-understand, and bulky. So right now, the game just breaks. I could have just made that player lose, but I ran out of time.
+
+In general - as I built in animations, I lost total control of the entire project. I can't even follow my own HTML and CSS, and a big part of my JS (the war event) doesn't make sense to me--I just know it works. My mindset is generally the ends justify the means, so I test things quickly to find a desirable outcome and then move on to the next issue/goal, so at the end, the code isn't well organized.
 
 <h3>User Stories</h3>
 
- - 
+ -
  -
