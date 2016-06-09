@@ -30,10 +30,6 @@ body {
     margin: 0px 0px 0px 10px;
 }
 
-input {
-    margin-top: 3px;
-}
-
 #firstrow, #secondrow {
     position: absolute;
     display: flex;
@@ -44,10 +40,29 @@ input {
 
 #firstrow {
     margin-top: -80px;
+    justify-content: center;
 }
 
 #secondrow {
     margin-top: -30px;
+}
+
+input {
+    margin-top: -1px;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 16px;
+    background: #6b9c73;
+    padding: 5px 5px 5px 5px;
+    border: solid #ffffff 1px;
+    text-decoration: none;
+    height: 28px;
+}
+
+input:hover {
+  background: #8ebd95;
+  text-decoration: none;
 }
 
 .decks, .reset, .shuffle {
@@ -58,13 +73,14 @@ input {
     padding: 5px;
     font-size: 20px;
     color: white;
+    height: 25px;
 }
 
 .decks {
     margin-left: 25px;
 }
 .reset {
-    margin-left: 950px;
+    margin-left: 850px;
 }
 .shuffle {
     margin-left: 25px;
@@ -203,11 +219,30 @@ img {
     width: 500px;
 }
 
-.warbox {
+.warbox, .winner {
     position: absolute;
-    margin-left: -200px;
     top: -700px;
+    overflow: visible;
+}
+
+.warbox {
+    margin-left: -200px;
     height: 400px;
     width: 400px;
-    overflow: visible;
+}
+
+.winner {
+    border: red solid 10px;
+    font-family: "war-font";
+    font-size: 100px;
+    margin-left: -100px;
+    text-align: center;
+    width: 750px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    background: black;
+    color: white;
+    opacity: 0.9;
 }

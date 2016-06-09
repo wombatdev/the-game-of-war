@@ -22,11 +22,21 @@ Go to <a href="http://wombatdev.github.io/the-game-of-war/">http://wombatdev.git
 
 <h3>Unsolved Problems</h3>
 
-One in particular - how to handle cases where a player runs out of cards during a War event. I think I could have taken care of it, but adding animations resulted in my JS becoming extremely convoluted, hard-to-understand, and bulky. So right now, the game just breaks. I could have just made that player lose, but I ran out of time.
+Two in particular:
+
+1) This isn't really an unsolved problem, but I never added anything indicating where the user needs to click. So someone stumbling upon this website would have no idea. Easy fix, but I ran out of time.
+
+2) How to handle cases where a player runs out of cards during a War event. I think I could have taken care of it, but adding animations resulted in my JS becoming extremely convoluted, hard-to-understand, and bulky. So right now, the game just breaks. I could have just made that player lose, but I ran out of time.
 
 In general - as I built in animations, I lost total control of the entire project. I can't even follow my own HTML and CSS, and a big part of my JS (the war event) doesn't make sense to me--I just know it works. My mindset is generally the ends justify the means, so I test things quickly to find a desirable outcome and then move on to the next issue/goal, so at the end, the code isn't well organized.
 
 <h3>User Stories</h3>
 
- -
- -
+ - As a user, I want a standard 52-card deck of cards to be shuffled and split into two piles.
+ - I want two cards to flip over--one for me, and one for my opponent.
+ - I want the winner of that hand to have the higher-numbered card.
+ - I want the winner to have both cards added to their pile.
+ - I want one player to win the game when they hold all 52 cards.
+ - I want to be able to play with more than 52 cards--multiple decks.
+ - I want to be able to start over at any time.
+ - When the two played cards are an equal number, I want there to be a war--each player flips over three cards, and the higher card between the final pair wins the entire pot.

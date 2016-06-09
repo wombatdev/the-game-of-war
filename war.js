@@ -7,6 +7,7 @@ var computerCard;
 var playerWarCard;
 var computerWarCard;
 var pot = [];
+var theWinner;
 var winner;
 var clickDelay = 0;
 
@@ -29,6 +30,7 @@ $(".shuffle input").on("click", function () {
     shuffle(playerDeck);
     shuffle(computerDeck);
 })
+
 // I found this shuffle function online
 function shuffle(array) {
     var m = array.length, t, i;
@@ -68,6 +70,11 @@ function deal(array) {
 // When the user clicks on their stack of cards...
 $(".click img").on("click", function() {
 
+    if (playerDeck.length == 0) {
+        alert("You need to add a deck to have cards to play with!");
+        return;
+    }
+
     if (clickDelay != 0 ) {
         return;
     }
@@ -97,12 +104,8 @@ $(".click img").on("click", function() {
 
     console.log(playerDeck.length, computerDeck.length);
 
-    if (playerDeck.length == 0) {
-        console.log("the computer wins!");
-    }
-
-    if (computerDeck.length == 0) {
-        console.log("the player wins!");
+    if (playerDeck.length == 0 || computerDeck.length == 0) {
+        winning();
     }
 
     setTimeout(function () {
@@ -110,6 +113,16 @@ $(".click img").on("click", function() {
     }, 2000);
     }
 });
+
+$(".reset input").on("click", reset);
+
+function reset () {
+    decksInUse = 0;
+    $(".deckcount").html(decksInUse);
+    playerDeck = [];
+    computerDeck = [];
+    updateCounts();
+}
 
 // Every time a card is flipped:
 function handInPlay () {
@@ -267,6 +280,24 @@ function updateCounts () {
     computerCount = computerDeck.length;
     $("#playercount").html(playerCount);
     $("#computercount").html(computerCount);
+}
+
+function winning () {
+    if (playerDeck.length == 0) {
+        $(".winner").html("The computer wins!");
+    }
+
+    if (computerDeck.length == 0) {
+        $(".winner").html("You win!");
+    }
+
+    $(".winner").animate({top: "+=700px"}, "slow", "linear", function() {
+        setTimeout(function() {
+            ($(".winner").delay(1000).animate({top: "-=700px"}, "slow"));
+        }, 350);
+    });
+
+    reset();
 }
 
 
