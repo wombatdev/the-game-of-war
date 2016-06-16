@@ -47,6 +47,7 @@ function shuffle(array) {
         array[i] = t;
     }
     return array;
+    // You might also look into the `.sort` function
 }
 
 // To deal the "array" of cards...
@@ -110,6 +111,7 @@ $(".click img").on("click", function() {
         clickDelay = 0;
     }, 2000);
     }
+    // What does this } correspond to?
 });
 
 $(".reset input").on("click", reset);
@@ -136,6 +138,7 @@ function handInPlay () {
     $("<img class='front real' src='cards/computerstack.jpg' alt='computer stack' width=100% height=100% /><img class='back real' src=cards/"+computerCard+".png alt='computer card' width=100% height=100% />").appendTo(".computer.card");
     $(".card").css("overflow", "visible");
     $(".card").addClass("flipped");
+    // Whew! What a great place for handlebars
 
 
     // Both cards are now part of the winner's pot and are removed from their original stacks.
