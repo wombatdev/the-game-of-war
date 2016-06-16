@@ -1,3 +1,5 @@
+<!-- Take a look at markdown: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet -->
+
 <h1>War - reinvented</h1>
 
 <sub>Not really.</sub>
