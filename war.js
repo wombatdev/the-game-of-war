@@ -188,42 +188,42 @@ function warEvent () {
                 $(".card").css("visibility", "hidden");
                 $(".card").removeClass("flipped");
                 next();
-            }, 2000);
+            }, 1500);
         },
         function(next){
             setTimeout(function(){
                 $(".card").css("visibility", "visible");
                 handInPlay();
                 next();
-            }, 1500);
+            }, 500);
         },
         function(next){
             setTimeout(function(){
                 $(".card").css("visibility", "hidden");
                 $(".card").removeClass("flipped");
                 next();
-            }, 2000);
+            }, 1500);
         },
         function(next){
             setTimeout(function(){
                 $(".card").css("visibility", "visible");
                 handInPlay();
                 next();
-            }, 1500);
+            }, 500);
         },
         function(next){
             setTimeout(function(){
                 $(".card").css("visibility", "hidden");
                 $(".card").removeClass("flipped");
                 next();
-            }, 2000);
+            }, 1500);
         },
         function(next){
             setTimeout(function(){
                 $(".card").css("visibility", "visible");
                 handInPlay();
                 next();
-            }, 1500);
+            }, 500);
         },
         function(next){
             setTimeout(function(){
