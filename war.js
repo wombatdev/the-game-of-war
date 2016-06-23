@@ -10,7 +10,7 @@ var pot = [];
 var theWinner;
 var winner;
 var clickDelay = 0;
-var width = $('html').css('max-device-width');
+if (window.matchMedia('(max-device-width: 960px)').matches) { var winW = (window.innerWidth > 0) ? window.innerWidth : screen.width; } else { var winW = screen.width; }
 
 
 $(document).on("ready", function() {
@@ -25,7 +25,7 @@ $(".decks input").on("click", function () {
     decksInUse++;
     $(".deckcount").html(decksInUse);
     updateCounts();
-    alert(width);
+    alert(winW);
 })
 
 $(".shuffle input").on("click", function () {
