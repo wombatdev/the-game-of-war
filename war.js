@@ -28,7 +28,6 @@ $(".decks input").on("click", function () {
     decksInUse++;
     $(".deckcount").html(decksInUse);
     updateCounts();
-    alert(mobile);
 })
 
 $(".shuffle input").on("click", function () {
@@ -139,8 +138,11 @@ function handInPlay () {
     $(".cardstack.active").css("z-index", 15);
     $("<img class='front real' src='cards/playerstack.jpg' alt='player stack' width=100% height=100% /><img class='back real' src=cards/"+playerCard+".png alt='player card' width=100% height=100% />").appendTo(".player.card");
     $("<img class='front real' src='cards/computerstack.jpg' alt='computer stack' width=100% height=100% /><img class='back real' src=cards/"+computerCard+".png alt='computer card' width=100% height=100% />").appendTo(".computer.card");
-    $(".card").css("overflow", "visible");
-    $(".card").addClass("flipped");
+    $("img.real").load(function() {
+        $(".card").css("overflow", "visible");
+        $(".card").addClass("flipped");
+    })
+
 
 
     // Both cards are now part of the winner's pot and are removed from their original stacks.
