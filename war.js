@@ -10,7 +10,10 @@ var pot = [];
 var theWinner;
 var winner;
 var clickDelay = 0;
-if (window.matchMedia('(max-device-width: 960px)').matches) { var winW = (window.innerWidth > 0) ? window.innerWidth : screen.width; } else { var winW = screen.width; }
+mobile = false;
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    var mobile = true;
+}
 
 
 $(document).on("ready", function() {
@@ -25,7 +28,7 @@ $(".decks input").on("click", function () {
     decksInUse++;
     $(".deckcount").html(decksInUse);
     updateCounts();
-    alert(winW);
+    alert(mobile);
 })
 
 $(".shuffle input").on("click", function () {
