@@ -10,6 +10,7 @@ var pot = [];
 var theWinner;
 var winner;
 var clickDelay = 0;
+var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 
 
 $(document).on("ready", function() {
@@ -247,12 +248,22 @@ function warEvent () {
 function endOfTurn () {
     setTimeout( function(){
         $(".card").css("visibility", "hidden");
-        if (winner == 0) {
-            $(".real").css("transform", "translate(1000px,-1000px)").css("transition","all 0.25s ease-in-out");
-        }
+        if (width > 480) {
+            if (winner == 0) {
+                $(".real").css("transform", "translate(1000px,-1000px)").css("transition","all 0.25s ease-in-out");
+            }
+            else {
+                $(".real").css("transform", "translate(-1000px,-1000px)").css("transition","all 0.25s ease-in-out");
+            }
+        };
         else {
-            $(".real").css("transform", "translate(-1000px,-1000px)").css("transition","all 0.25s ease-in-out");
-        }
+            if (winner == 0) {
+                $(".real").css("transform", "translate(0px,-1000px)").css("transition","all 0.25s ease-in-out");
+            }
+            else {
+                $(".real").css("transform", "translate(0px,1000px)").css("transition","all 0.25s ease-in-out");
+            }
+        };
         updateCounts();
         setTimeout( function(){
             $(".real").remove();
