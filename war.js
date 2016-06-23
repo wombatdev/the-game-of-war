@@ -10,7 +10,7 @@ var pot = [];
 var theWinner;
 var winner;
 var clickDelay = 0;
-var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+var width = $('html').css('max-device-width');
 
 
 $(document).on("ready", function() {
