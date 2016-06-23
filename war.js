@@ -195,7 +195,7 @@ function warEvent () {
                 $(".card").css("visibility", "visible");
                 handInPlay();
                 next();
-            }, 500);
+            }, 200);
         },
         function(next){
             setTimeout(function(){
@@ -209,7 +209,7 @@ function warEvent () {
                 $(".card").css("visibility", "visible");
                 handInPlay();
                 next();
-            }, 500);
+            }, 200);
         },
         function(next){
             setTimeout(function(){
@@ -223,7 +223,7 @@ function warEvent () {
                 $(".card").css("visibility", "visible");
                 handInPlay();
                 next();
-            }, 500);
+            }, 200);
         },
         function(next){
             setTimeout(function(){
