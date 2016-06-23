@@ -246,3 +246,9 @@ img {
     color: white;
     opacity: 0.9;
 }
+
+@media screen and (min-width: 480px) {
+    .container {
+        flex-direction: column;
+    }
+}
