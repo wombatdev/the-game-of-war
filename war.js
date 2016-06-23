@@ -193,9 +193,11 @@ function warEvent () {
         function(next){
             setTimeout(function(){
                 $(".card").css("visibility", "visible");
-                handInPlay();
+                setTimeout (function(){
+                    handInPlay();
+                }, 300);
                 next();
-            }, 200);
+            }, 500);
         },
         function(next){
             setTimeout(function(){
@@ -207,9 +209,11 @@ function warEvent () {
         function(next){
             setTimeout(function(){
                 $(".card").css("visibility", "visible");
-                handInPlay();
+                setTimeout (function(){
+                    handInPlay();
+                }, 300);
                 next();
-            }, 200);
+            }, 500);
         },
         function(next){
             setTimeout(function(){
@@ -221,9 +225,11 @@ function warEvent () {
         function(next){
             setTimeout(function(){
                 $(".card").css("visibility", "visible");
-                handInPlay();
+                setTimeout (function(){
+                    handInPlay();
+                }, 300);
                 next();
-            }, 200);
+            }, 500);
         },
         function(next){
             setTimeout(function(){

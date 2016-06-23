@@ -189,7 +189,7 @@ img {
 }
 
 .player.card.flipped {
-  transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
 }
 
 .computer.card.flipped {
