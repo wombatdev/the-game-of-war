@@ -185,51 +185,45 @@ function warEvent () {
     chainFunctions([
         function(next){
             setTimeout(function(){
-                $(".card").css("visibility", "hidden");
+                $(".card").css("visibility", "hidden").css("transition", "transform 0s");
                 $(".card").removeClass("flipped");
                 next();
-            }, 1500);
+            }, 1200);
         },
         function(next){
             setTimeout(function(){
-                $(".card").css("visibility", "visible");
-                setTimeout (function(){
-                    handInPlay();
-                }, 300);
+                $(".card").css("visibility", "visible").css("transition", "transform 0.5s");
+                handInPlay();
                 next();
-            }, 500);
+            }, 10);
         },
         function(next){
             setTimeout(function(){
-                $(".card").css("visibility", "hidden");
+                $(".card").css("visibility", "hidden").css("transition", "transform 0s");
                 $(".card").removeClass("flipped");
                 next();
-            }, 1500);
+            }, 1200);
         },
         function(next){
             setTimeout(function(){
-                $(".card").css("visibility", "visible");
-                setTimeout (function(){
-                    handInPlay();
-                }, 300);
+                $(".card").css("visibility", "visible").css("transition", "transform 0.5s");
+                handInPlay();
                 next();
-            }, 500);
+            }, 10);
         },
         function(next){
             setTimeout(function(){
-                $(".card").css("visibility", "hidden");
+                $(".card").css("visibility", "hidden").css("transition", "transform 0s");
                 $(".card").removeClass("flipped");
                 next();
-            }, 1500);
+            }, 1200);
         },
         function(next){
             setTimeout(function(){
-                $(".card").css("visibility", "visible");
-                setTimeout (function(){
-                    handInPlay();
-                }, 300);
+                $(".card").css("visibility", "visible").css("transition", "transform 0.5s");
+                handInPlay();
                 next();
-            }, 500);
+            }, 10);
         },
         function(next){
             setTimeout(function(){
