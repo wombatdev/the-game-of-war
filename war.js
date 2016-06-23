@@ -255,7 +255,7 @@ function endOfTurn () {
             else {
                 $(".real").css("transform", "translate(-1000px,-1000px)").css("transition","all 0.25s ease-in-out");
             }
-        };
+        }
         else {
             if (winner == 0) {
                 $(".real").css("transform", "translate(0px,-1000px)").css("transition","all 0.25s ease-in-out");
