@@ -25,6 +25,7 @@ $(".decks input").on("click", function () {
     decksInUse++;
     $(".deckcount").html(decksInUse);
     updateCounts();
+    alert(width);
 })
 
 $(".shuffle input").on("click", function () {
