@@ -222,7 +222,8 @@ img {
 .warbox, .winner {
     position: absolute;
     top: -700px;
-    /*overflow: visible;*/
+    overflow: visible;
+    visibility: hidden;
 }
 
 .warbox {
